@@ -1,3 +1,18 @@
 .text {
 	font-family: "Comic Sans MS";
 }
+
+.table-whole {
+	margin: 0px auto;
+}
+
+.table-day {
+	text-align: center;
+	width: 50%;
+}
+
+.table-hours {
+	text-align: center;
+	font-weight: bold;
+	width: 50%;
+}
