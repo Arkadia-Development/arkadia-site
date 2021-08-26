@@ -1,11 +1,12 @@
 .snackbar-title {
 	font-family: "Forte";
-	font-size: 170px;
+	font-size: 6vw;
 	text-align: center;
 	color:fuchsia;
-	margin-top: 0px;
+	margin: 0px;
+	padding: 0px;
 }
 
 .animated-character-image {
-	height: 450px
+	width: 100%;
 }
