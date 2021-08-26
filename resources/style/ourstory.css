@@ -56,3 +56,7 @@
       transform: rotateX(26deg) translateZ(-5000px);
     }
   }
+
+  .wizardspeech {
+    font-size: 175%;
+  }
