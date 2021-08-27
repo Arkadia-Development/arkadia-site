@@ -1,6 +1,10 @@
 .text {
 	font-family: "Comic Sans MS";
-	color: white;
+	color:white;
+}
+
+.button_text{
+	color:black;
 }
 
 .table-whole {

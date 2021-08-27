@@ -17,10 +17,16 @@
 		<!-- Favicon inclusion -->
 		<link rel="icon" href="assets/space-invader.png">
 	</head>
+	<style>
+		body{
+			background-image:url("assets/backgrounds/homepage_background.gif");
+			
+		}
+	</style>
 	<body>
 		<div style="text-align: center;">
 			<h1 id="header" class="text">arkadia placeholder text</h1>
-			<button id="testbutton" onclick=buttonclick()><span class="text">click me</span></button>
+			<button id="testbutton" onclick=buttonclickzero()><span>click me</span></button>
 
 			<br/>
 			<br/>
@@ -88,6 +94,7 @@
 			</table>
 
 			<br/>
+			<button id="buttontwo" style = "display:none" onclick=buttonclickone()><span>Over Here!</span></button>
 			<br/>
 			
 			<div class = "text">
@@ -98,7 +105,7 @@
 				<br/>
 
 				<span style = "vertical-align:middle;">
-				$5 entry fee in <img style = "height:25px; vertical-align: middle;" src = "assets/Dollar_Sign.png"/> Cash or <img style = "width:25px; vertical-align: middle;" src="assets/Dogecoin_Logo.png"/> Dogecoin only
+				$5 entry fee in <img style = "height:25px; vertical-align: middle;" src = "assets/dollar-sign.gif"/> Cash or <img style = "width:25px; vertical-align: middle;" src="assets/Dogecoin_Logo.png"/> Dogecoin (yeah seriously) only
 				</span>
 			</div>
 
@@ -112,11 +119,19 @@
 				<br/>
 				Fayetteville, AR 72703
 			</div>
-
+			
 			<br/>
+			<button id = "buttonfour" onclick="location.href = '/ourstory'"> <span> click here to learn our story</span></button>
 			<br/>
-
-			<a class="text" href="/gamestatus">click here to see what the status of each cabinet</a>
+			<a class="text" href="/gamestatus">click here to see the status of each arcade cabinet</a>
+			<br/>
+			<a href="/snackbar"><img src="assets/snackbar.png" style="height: 16px;" alt="Snackbar"></a>
 		</div>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<button id = "buttonthree" style = "display:none" onclick ="location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';" ><span>hey you found me! click here</span></button>
 	</body>
 </html>

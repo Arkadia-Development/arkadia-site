@@ -1,7 +1,12 @@
 var headerbool = false;
 
-var buttonclick = function(){
-	if(!headerbool) $("#header").css("color", "aquamarine");
-	else $("#header").css("color", "black");
-	headerbool = !headerbool;
+
+var buttonclickzero = function(){
+	document.getElementById("testbutton").style.visibility = "hidden";
+	document.getElementById("buttontwo").style = "display:shown";
+}	
+
+var buttonclickone = function(){
+	document.getElementById("buttontwo").style.visibility = "hidden";
+	document.getElementById("buttonthree").style = "display:hidden";
 }
