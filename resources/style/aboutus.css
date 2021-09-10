@@ -1,0 +1,47 @@
+.header {
+	height: 15%;
+	border-radius: 0px 0px 15px 15px;
+	background-color: royalblue;
+	text-align: center;
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	margin: 0px;
+	background-color: #DDEEFF;
+}
+
+.realtext {
+	font-family: "Trebuchet MS";
+}
+
+.page-title {
+	font-size: 10vh;
+	padding:0px;
+	margin:0px;
+}
+
+.divline {
+	font-size: 5vh;
+	padding-top: 4vh;
+	padding-bottom: 7vh;
+}
+
+.person-name {
+	font-size: 8vh;
+}
+
+.person-title {
+	font-size: 3vh;
+	padding-bottom: 3vh;
+}
+
+.person-portrait {
+	width: 20%;
+}
+
+.person-bio {
+	width: 45%;
+	margin: 0px auto;
+}
