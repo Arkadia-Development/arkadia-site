@@ -29,7 +29,11 @@
 
 			<br/>
 
-			<a href="/" class="text"><img src="../assets/right-arrow.png" style="height: 16px;"> back to the home page <img src="../assets/left-arrow.png" style="height: 16px;"></a>
+			<a href="/" class="text">
+				<img src="../assets/right-arrow.png" style="height: 16px;" alt="right arrow">
+				back to the home page
+				<img src="../assets/left-arrow.png" style="height: 16px;" alt="left arrow">
+			</a>
 
 			<br/>
 			<br/>
@@ -37,13 +41,16 @@
 			<span id="totalCabinets" class="text"></span>
 			<br/>
 			<span id="onlineCabinets" class="text"></span>
+			<br/>
+			<div id="searchbarContainer">
+				<span class="text">search to your heart's content: </span>
+				<input type="text" placeholder="some kind of search condition??" style="width:30ch" id="searchbar" onkeyup="narrowList()"/>
+			</div>
 			
 			<br/>
 			<br/>
 
-			<img id="pacman" style="width: 40%"/>
-			<br/>
-			<img id="mappy" style="width: 40%"/>
+			<div id="imageContainer"></div>
 		</div>
 	</body>
 </html>
