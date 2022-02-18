@@ -1,0 +1,45 @@
+.header {
+	height: 15%;
+	border-radius: 0px 0px 15px 15px;
+	background-color: royalblue;
+	text-align: center;
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	margin: 0px;
+	background-color: #DDEEFF;
+}
+
+.realtext {
+	font-family: "Trebuchet MS";
+}
+
+.page-title {
+	font-size: 10vh;
+	padding:0px;
+	margin:0px;
+}
+
+.divline {
+	font-size: 5vh;
+	padding-top: 0;
+	padding-bottom: 7vh;
+}
+
+.faq-box {
+	background-color: #CCCCFF;
+	width: 40%;
+	margin-left: 30%;
+	padding: 10px;
+}
+
+.question {
+	font-size: 8vh;
+}
+
+.answer {
+	width: 45%;
+	margin: 0px auto;
+}
