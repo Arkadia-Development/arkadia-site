@@ -1,28 +1,13 @@
 var cabinets = [];
+var notfound = "../../assets/game-banners/notfound.png";
 
-async function checkImages(color, bw){
-	try{
-		$.ajax({
-			url: color,
-			type: "GET",
-			error: (e) => {
-				throw e;
-			}
-		});
-
-		$.ajax({
-			url: bw,
-			type: "GET",
-			error: (e) => {
-				throw e;
-			}
-		})
-
-		return [color, bw];
-	}
-	catch(e){
-		return ["../../assets/game-banners/notfound.png", "../../assets/game-banners/notfound.png"];
-	}
+async function checkBothImages(color, bw) {
+	let responseFunction = function (resp1, resp2) {
+		let url1 = resp1[1] === "success" ? color : notfound;
+		let url2 = resp2[1] === "success" ? bw : notfound;
+        return [url1, url2];
+    };
+	return $.when($.ajax(color), $.ajax(bw)).then(responseFunction, responseFunction);
 }
 
 function start() {
@@ -35,22 +20,20 @@ function start() {
 
 		for(let i = 0; i < data.length; i++){
 			var cabinetFolder = "../../assets/game-banners/" + data[i].id;
-			var colorImage = cabinetFolder + "/color.png";
-			var bwImage = cabinetFolder + "/bw.png";
+			var color = cabinetFolder + "/color.png";
+			var bw = cabinetFolder + "/bw.png";
 
-			var imagesExist = checkImages(colorImage, bwImage);
+			var imagesExist = checkBothImages(color, bw);
 			imagesExist.then(function(result){
-				if(result){
-					var imgTag = document.createElement("img");
-					imgTag.style = "width:40%";
-					imgTag.src = data[i].isWorking ? result[0] : result[1];
-					imgContainer.appendChild(imgTag);
-					if(data[i].isWorking){ 
-						onlineCabinets++;
-						$("#onlineCabinets").html(onlineCabinets != 0 ? "online cabinets: " + onlineCabinets : "online cabinets: ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR");
-					}
-					if(i != data.length - 1) imgContainer.appendChild(document.createElement("br"));
+				var imgTag = document.createElement("img");
+				imgTag.style = "width:40%";
+				imgTag.src = data[i].isWorking ? result[0] : result[1];
+				imgContainer.appendChild(imgTag);
+				if(data[i].isWorking){ 
+					onlineCabinets++;
+					$("#onlineCabinets").html(onlineCabinets != 0 ? "online cabinets: " + onlineCabinets : "online cabinets: ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR");
 				}
+				if(i != data.length - 1) imgContainer.appendChild(document.createElement("br"));
 			});
 		}
 
@@ -82,13 +65,16 @@ narrowList = function(){
 	var imgContainer = document.getElementById("imageContainer");
 	filteredCabinets.forEach((cabinet, key, arr) => {
 		var cabinetFolder = "../../assets/game-banners/" + cabinet.id;
-		var colorImage = cabinetFolder + "/color.png";
-		var bwImage = cabinetFolder + "/bw.png";
+		var color = cabinetFolder + "/color.png";
+		var bw = cabinetFolder + "/bw.png";
 
-		var imgTag = document.createElement("img");
-		imgTag.style = "width:40%";
-		imgTag.src = cabinet.isWorking ? colorImage : bwImage;
-		imgContainer.appendChild(imgTag);
-		if(key != arr.length - 1) imgContainer.appendChild(document.createElement("br"));
+		var imagesExist = checkBothImages(color, bw);
+		imagesExist.then(function(result){
+			var imgTag = document.createElement("img");
+			imgTag.style = "width:40%";
+			imgTag.src = cabinet.isWorking ? result[0] : result[1];
+			imgContainer.appendChild(imgTag);
+			if(cabinet != arr[arr.length - 1]) imgContainer.appendChild(document.createElement("br"));
+		});
 	});
 }
