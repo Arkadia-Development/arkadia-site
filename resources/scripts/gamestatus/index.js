@@ -12,7 +12,7 @@ async function checkBothImages(color, bw) {
 
 function start() {
 	$.get({
-		url: "http://localhost:8080/GetAllGameStatuses"
+		url: "https://arkadia-site-api.herokuapp.com/GetAllGameStatuses"
 	}).done(function(data){
 		cabinets = data;
 		let onlineCabinets = 0;
