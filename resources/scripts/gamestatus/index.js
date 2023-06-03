@@ -17,6 +17,11 @@ function cabToImgTag(cabinet) {
 		: notfound;
 	subTag.style = 'z-index:1;max-height:150px;max-width:100%;margin:auto';
 	imgBox.appendChild(subTag);
+	const titleTag = document.createElement('p');
+	titleTag.className = 'text';
+	titleTag.style = 'margin:auto'
+	titleTag.innerHTML = `${cabinet.fullTitle} (published by ${cabinet.searchTerms[cabinet.searchTerms.length - 1]})`;
+	imgBox.appendChild(titleTag);
 	if (!cabinet.isWorking) {
 		const tapeTag = document.createElement("img");
 		tapeTag.src = constructionTape;
@@ -26,10 +31,6 @@ function cabToImgTag(cabinet) {
 		imgBox.appendChild(tapeTag);
 		imgBox.appendChild(grayFadeTag);
 	}
-	const titleTag = document.createElement('p');
-	titleTag.className = 'text';
-	titleTag.style = 'margin:auto'
-	titleTag.innerHTML = `${cabinet.fullTitle} (published by ${cabinet.searchTerms[cabinet.searchTerms.length - 1]})`
 	imgContainer.appendChild(imgBox);
 	imgContainer.appendChild(document.createElement("br"));
 }
