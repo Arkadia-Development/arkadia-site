@@ -1,21 +1,15 @@
+import { apiBaseUrl } from "../secrets.js";
+
 var cabinets = [];
 var notfound = "../../assets/game-banners/notfound.png";
 const constructionTape = "../../assets/game-banners/construction-tape.png";
-
-async function checkBothImages(color, bw) {
-	let responseFunction = function (resp1, resp2) {
-		let url1 = resp1[1] === "success" ? color : notfound;
-		let url2 = resp2[1] === "success" ? bw : notfound;
-        return [url1, url2];
-    };
-	return $.when($.ajax(color), $.ajax(bw)).then(responseFunction, responseFunction);
-}
 
 function cabToImgTag(cabinet) {
 	var imgContainer = document.getElementById("imageContainer");
 	var imageExists = !!cabinet.banner;
 	const imgBox = document.createElement("div");
 	imgBox.id = cabinet.id;
+	imgBox.title = cabinet.fullTitle;
 	imgBox.style = `position:relative;width:40%;margin:auto`;
 	const subTag = document.createElement("img");
 	subTag.src = imageExists
@@ -32,13 +26,17 @@ function cabToImgTag(cabinet) {
 		imgBox.appendChild(tapeTag);
 		imgBox.appendChild(grayFadeTag);
 	}
+	const titleTag = document.createElement('p');
+	titleTag.className = 'text';
+	titleTag.style = 'margin:auto'
+	titleTag.innerHTML = `${cabinet.fullTitle} (published by ${cabinet.searchTerms[cabinet.searchTerms.length - 1]})`
 	imgContainer.appendChild(imgBox);
 	imgContainer.appendChild(document.createElement("br"));
 }
 
 function start() {
 	$.get({
-		url: "http://192.168.1.70:8080/GetAllGameStatuses"
+		url: apiBaseUrl + "/GetAllGameStatuses"
 	}).done(function(data){
 		cabinets = data;
 		let onlineCabinets = 0;
@@ -53,13 +51,9 @@ function start() {
 	});
 }
 
-window.onload = function(){
-	start();
-}
-
 ////////////////////////////////////////////////////////////
 
-narrowList = function(){
+const narrowList = function(){
 	var searchTerm = $("#searchbar").val();
 
 	var imageContainer = document.getElementById("imageContainer");
@@ -68,7 +62,7 @@ narrowList = function(){
 	}
 
 	var filteredCabinets = cabinets.map(val => val); // deep copy by value rather than reference
-	params = searchTerm.split(' ');
+	let params = searchTerm.split(' ');
 	for(let i = 0; i < params.length; i++) params[i] = params[i].replace(/[^A-Za-z0-9]/g, '');
 	params = params.filter(val => val !== '');
 	if (params.length) {
@@ -89,4 +83,11 @@ narrowList = function(){
 	}
 
 	filteredCabinets.forEach(cabinet => cabToImgTag(cabinet));
+}
+
+////////////////////////////////////////////////////////////
+
+window.onload = function(){
+	document.getElementById('searchbar').onkeyup = narrowList
+	start();
 }
