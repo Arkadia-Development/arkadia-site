@@ -40,6 +40,7 @@ function start() {
 	$.get({
 		url: "http://192.168.1.70:8080/GetAllGameStatuses"
 	}).done(function(data){
+		cabinets = data;
 		let onlineCabinets = 0;
 		for(let i = 0; i < data.length; i++){
 			cabToImgTag(data[i]);
@@ -48,7 +49,6 @@ function start() {
 				$("#onlineCabinets").html(onlineCabinets != 0 ? "online cabinets: " + onlineCabinets : "online cabinets: ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR");
 			}
 		}
-
 		$("#totalCabinets").html("total cabinets: " + data.length);
 	});
 }
@@ -67,12 +67,26 @@ narrowList = function(){
 		imageContainer.removeChild(imageContainer.firstChild);
 	}
 
-	var filteredCabinets = [];
-	cabinets.forEach(cabinet => {
-		cabinet.searchTerms.forEach(term => {
-			if(term.includes(searchTerm) && !filteredCabinets.includes(cabinet)) filteredCabinets.push(cabinet);
+	var filteredCabinets = cabinets.map(val => val); // deep copy by value rather than reference
+	params = searchTerm.split(' ');
+	for(let i = 0; i < params.length; i++) params[i] = params[i].replace(/[^A-Za-z0-9]/g, '');
+	params = params.filter(val => val !== '');
+	if (params.length) {
+		let containsParams = params.map(() => false);
+		cabinets.forEach(cabinet => {
+			params.forEach((param, i) => {
+				cabinet.searchTerms.forEach(term => {
+					if(term.includes(param.toLowerCase())){
+						containsParams[i] = true;
+					}
+				});	
+			});
+			if(!containsParams.every((element) => element)) {
+				filteredCabinets = filteredCabinets.filter((cab) => cab.id !== cabinet.id);
+			}
+			containsParams = params.map(() => false);
 		});
-	});
+	}
 
 	filteredCabinets.forEach(cabinet => cabToImgTag(cabinet));
 }
