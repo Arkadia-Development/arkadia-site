@@ -24,18 +24,18 @@ function currentSlide(n) {
 
 function showSlides(n) {
 	var i;
-	var slides = document.getElementsByClassName("slides fade");
-	var dots = document.getElementsByClassName("dot");
+	var slides = document.getElementsByClassName('slides fade');
+	var dots = document.getElementsByClassName('dot');
 	if (n > slides.length) {slideIndex = 1}
 	if (n < 1) {slideIndex = slides.length}
 	for (i = 0; i < slides.length; i++) {
-		slides[i].style.display = "none";
+		slides[i].style.display = 'none';
 	}
 	for (i = 0; i < dots.length; i++) {
-		dots[i].className = dots[i].className.replace(" active", "");
+		dots[i].className = dots[i].className.replace(' active', '');
 	}
-	slides[slideIndex-1].style.display = "block";
-	dots[slideIndex-1].className += " active";
+	slides[slideIndex-1].style.display = 'block';
+	dots[slideIndex-1].className += ' active';
 	time = 5;
 }
 
@@ -51,31 +51,31 @@ function timeCount(){
 }
 
 function galagaColors(){
-	var td = document.getElementById("galagaPackage");
+	var td = document.getElementById('galagaPackage');
 	
-	var g1 = document.createElement("span");
-	g1.innerHTML = "G";
-	g1.style.color = "#" + colors[0];
+	var g1 = document.createElement('span');
+	g1.innerHTML = 'G';
+	g1.style.color = '#' + colors[0];
 
-	var a1 = document.createElement("span");
-	a1.innerHTML = "A";
-	a1.style.color = "#" + colors[1];
+	var a1 = document.createElement('span');
+	a1.innerHTML = 'A';
+	a1.style.color = '#' + colors[1];
 
-	var l = document.createElement("span");
-	l.innerHTML = "L";
-	l.style.color = "#" + colors[2];
+	var l = document.createElement('span');
+	l.innerHTML = 'L';
+	l.style.color = '#' + colors[2];
 
-	var a2 = document.createElement("span");
-	a2.innerHTML = "A";
-	a2.style.color = "#" + colors[3];
+	var a2 = document.createElement('span');
+	a2.innerHTML = 'A';
+	a2.style.color = '#' + colors[3];
 
-	var g2 = document.createElement("span");
-	g2.innerHTML = "G";
-	g2.style.color = "#" + colors[4];
+	var g2 = document.createElement('span');
+	g2.innerHTML = 'G';
+	g2.style.color = '#' + colors[4];
 
-	var a3 = document.createElement("span");
-	a3.innerHTML = "A";
-	a3.style.color = "#" + colors[5];
+	var a3 = document.createElement('span');
+	a3.innerHTML = 'A';
+	a3.style.color = '#' + colors[5];
 
 	while(td.childElementCount > 0) td.removeChild(td.firstChild);
 	td.appendChild(g1);
