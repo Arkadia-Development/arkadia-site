@@ -39,8 +39,9 @@ function start() {
 	$.get({
 		url: apiBaseUrl + "/GetAllGameStatuses"
 	}).done(function(data){
-		cabinets = data;
 		let onlineCabinets = 0;
+		data = data.sort((a, b) => a.id > b.id ? 1 : -1);
+		cabinets = data;
 		for(let i = 0; i < data.length; i++){
 			cabToImgTag(data[i]);
 			if(data[i].isWorking){ 
