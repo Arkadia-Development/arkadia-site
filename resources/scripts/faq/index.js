@@ -5,7 +5,7 @@ var questions = [
 	},
 	{
 		'question': 'Do you have x cabinet?',
-		'answer': 'try the <a href='../gamestatus'>game status page</a>!'
+		'answer': "try the <a href='../gamestatus'>game status page</a>!"
 	}
 ]
 
