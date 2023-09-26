@@ -3,6 +3,17 @@
 	color:white;
 }
 
+.text-footnote {
+	font-family: 'Times New Roman';
+	color: white;
+	font-size: small;
+}
+
+.text-only {
+	margin-left: 8%;
+	margin-right: 8%;
+}
+
 .button_text{
 	color:black;
 }
