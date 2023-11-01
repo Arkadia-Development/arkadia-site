@@ -23,9 +23,11 @@ body {
 }
 
 .divline {
-	font-size: 5vh;
-	padding-top: 0;
-	padding-bottom: 7vh;
+	margin-top: 5vh;
+	margin-bottom: 5vh;
+	margin-left: 10%;
+	margin-right: 10%;
+	border: solid 1px black;
 }
 
 .person-name {
@@ -40,6 +42,7 @@ body {
 .person-portrait {
 	max-width: 20%;
 	max-height: 20vh;
+	margin-bottom: 8px;
 }
 
 .person-bio {
