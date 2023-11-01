@@ -46,10 +46,10 @@ function start() {
 			cabToImgTag(data[i]);
 			if(data[i].isWorking){ 
 				onlineCabinets++;
-				$('#onlineCabinets').html(onlineCabinets != 0 ? 'online cabinets: ' + onlineCabinets : 'online cabinets: ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR');
+				$('#onlineCabinets').html(onlineCabinets != 0 ? 'Working Games: ' + onlineCabinets : 'Working Games: ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR');
 			}
 		}
-		$('#totalCabinets').html('total cabinets: ' + data.length);
+		$('#totalCabinets').html('Total Games: ' + data.length);
 	});
 }
 
