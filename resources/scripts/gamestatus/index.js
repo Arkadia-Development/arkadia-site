@@ -50,6 +50,8 @@ function start() {
 			}
 		}
 		$('#totalCabinets').html('Total Games: ' + data.length);
+		const loadingTag = document.getElementById('loading');
+		loadingTag.style = 'display:none;'
 	});
 }
 
